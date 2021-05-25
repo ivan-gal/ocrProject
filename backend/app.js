@@ -1,5 +1,9 @@
+require('dotenv').config();
 const express = require('express');
 const path = require('path');
+
+const { uploadFile } = require('./middleware');
+const { getFile } = require('./controllers');
 
 //Initilizing the app
 
@@ -11,7 +15,7 @@ app.use(express.json());
 
 app.use(express.static(staticPath));
 
-app.post('api/uploadDoc');
+app.post('api/uploadDoc', uploadFile.single('docImg'), getFile);
 
 app.use(async (err, req, res, next) => {
     const status = err.isJoi ? 400 : err.code || 500;

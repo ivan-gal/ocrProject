@@ -1,20 +1,9 @@
-const express = require('express');
-const path = require('path');
+const app = require('./app');
 
-//Initilizing the app
+const { PORT } = process.env;
 
-const staticPath = path.resolve(__dirname, 'static');
+const server = app.listen(PORT, () =>
+    console.log(`server escuchando en puerto ${PORT}`)
+);
 
-const app = express();
-
-app.use(express.json());
-
-app.use(express.static(staticPath));
-
-app.post('api/uploadDoc');
-
-app.use(async (err, req, res, next) => {
-    const status = err.isJoi ? 400 : err.code || 500;
-    res.status(status);
-    res.send({ resultado: 'ERROR', error: err.message });
-});
+module.exports = { server };
