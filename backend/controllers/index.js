@@ -1,5 +1,5 @@
-const { getFile } = require('./ocrController');
+const ocrController = require('./ocrController');
 
 module.exports = {
-    getFile,
+    ocrController,
 };
