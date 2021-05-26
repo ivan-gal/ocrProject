@@ -20,9 +20,26 @@ const UploadFile : React.FC<UploadFileInterface> = ({files, setFiles, setPreview
 
 
     }
+
+
+    const handleOnclick = () => {
+
+        const formData = new FormData();
+
+        formData.append('docImg', files[0])
+
+
+        const res = await fetch('http://poi-api.trek-quest.com/login', {
+      method: 'POST',
+      body: formData,
+    })
+
+
+    }
     return (<div>
         <label >Sube tu archivo.
             <input type="file" onChange={(e) => handleFile(e)} multiple/>
+            <button onClick={handleOnclick}></button>
         </label>
     </div>)
 }
