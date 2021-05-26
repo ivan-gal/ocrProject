@@ -3,9 +3,10 @@ const { Paragraph, Document, TextRun } = require('docx');
 const fs = require('fs');
 
 const createDoc = (textpicture) => {
+    const textPictureToArray = textpicture.split('\n');
     const paragraphArray = [];
 
-    for (let text of textpicture) {
+    for (let text of textPictureToArray) {
         const form = new Paragraph({
             children: [new TextRun(text)],
         });
