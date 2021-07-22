@@ -1,19 +1,20 @@
-import { useState } from 'react';
-import './App.css';
-import UploadFile from './Components/UploadFile';
-import FileList from './Components/FileList'
-import Convert from './Components/Convert';
+import './styles/App.scss';
+import { Route, Switch, useLocation } from 'react-router';
+import OcrComponent from './Components/OcrComponent';
+import Navbar from './Components/Navbar';
 
 function App() {
-    const [files, setFiles] = useState<string[]>([])
-    const [preview, setPreview] = useState<string[]>([])
-
+  const location = useLocation();
   return (
     <div className="App">
-      <h1>Conviert tus imagenes a documentos.</h1>
-      <UploadFile setFiles={setFiles} files={files} setPreview={setPreview} preview={preview}/>
-      <FileList preview={preview} setPreview={setPreview} setFiles={setFiles} files={files}/> 
-      <Convert />
+      <Navbar />
+      <Switch location={location} key={location.pathname}>
+        <Route path="/about" exact></Route>
+        <Route path="/api" exact></Route>
+        <Route path="/" exact>
+          <OcrComponent />
+        </Route>
+      </Switch>
     </div>
   );
 }

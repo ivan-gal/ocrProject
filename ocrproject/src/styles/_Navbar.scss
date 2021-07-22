@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans+SC:wght@200;400&display=swap');
+
+.nav-container {
+  display: flex;
+  flex-direction: column;
+  margin: 2rem;
+  justify-content: space-around;
+  background-color: white;
+  color: black;
+  font-family: 'Encode Sans SC', sans-serif;
+  font-weight: 400;
+
+  .option {
+    cursor: pointer;
+    border-bottom: 1px solid transparent;
+  }
+
+  .option:hover {
+    transition: 0.3s all ease-in;
+    border-bottom: 1px solid hsl(14, 31%, 61%);
+    color: hsl(14, 31%, 61%);
+  }
+}
