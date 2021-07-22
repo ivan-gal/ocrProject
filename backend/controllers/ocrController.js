@@ -6,7 +6,7 @@ const client = new vision.ImageAnnotatorClient({
     keyFilename: './backend/key.json',
 });
 
-const getFile = async (req, res, next) => {
+const fileToOcr = async (req, res, next) => {
     try {
         const { file } = req;
 
@@ -20,7 +20,7 @@ const getFile = async (req, res, next) => {
             'Content-Disposition',
             'attachment; filename=My Document.docx'
         );
-        res.send(Buffer.from(b64string, 'base64'));
+        res.send(Buffer.from(b64string, 'basde64'));
     } catch (err) {
         next(err);
     }
@@ -37,6 +37,16 @@ const getGoogleVision = async (file, next) => {
     }
 };
 
+//TODO - Create new controller to format the ocrFile to docx
+
+const ocrToDocx = () => {};
+
+//TODO - Crete new controller to format the ocrFile to pdf
+
+const ocrToPdf = () => {};
+
 module.exports = {
-    getFile,
+    fileToOcr,
+    ocrToDocx,
+    ocrToPdf,
 };
