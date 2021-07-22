@@ -1,8 +1,22 @@
-const EditText: React.FC = () => {
+interface EditTextInterface {
+  setSteps: (steps: number) => void;
+}
+
+const EditText: React.FC<EditTextInterface> = ({ setSteps }) => {
   return (
-    <>
-      <textarea></textarea>
-    </>
+    <div className="edit-text-container">
+      <div className="textarea-div">
+        <textarea></textarea>
+      </div>
+      <div className="buttons-back-next">
+        <button className="btn fourth back" onClick={() => setSteps(0)}>
+          Atras
+        </button>
+        <button className="btn fourth forward" onClick={() => setSteps(2)}>
+          Confirmar texto
+        </button>
+      </div>
+    </div>
   );
 };
 

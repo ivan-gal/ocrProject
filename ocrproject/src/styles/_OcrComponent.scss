@@ -1,94 +1,143 @@
-$brand-primary: tomato;
+$brand-primary: #f97068;
 $white: #fff;
 $grey-light: #ededed;
 
-.main-container {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: space-between;
-
-  %remain-steps {
-    &:before {
-      content: counter(stepNum);
-      font-family: inherit;
-      font-weight: 700;
-    }
-    &:after {
-      background-color: $grey-light;
-    }
+.ocr-component-container {
+  h1 {
+    color: #333447;
   }
-  .multi-steps {
-    display: table;
-    table-layout: fixed;
-    width: 100%;
-    > li {
-      counter-increment: stepNum;
-      text-align: center;
-      display: table-cell;
-      position: relative;
-      color: $brand-primary;
+  .main-container {
+    margin: auto;
+    margin-top: 4rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+    background-color: #edf2ef;
+    min-width: 200px;
+    max-width: 50vw;
+    height: fit-content;
+    min-height: 60vh;
+    padding: 2rem;
+    border-radius: 5px;
 
+    .container-fluid {
+      ul {
+        list-style-type: disc;
+        margin-block-start: 0;
+        margin-block-end: 0;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+        padding-inline-start: 0px;
+      }
+    }
+
+    %remain-steps {
       &:before {
-        content: '\f00c';
-        content: '\2713;';
-        content: '\10003';
-        content: '\10004';
-        content: '\2713';
-        display: block;
-        margin: 0 auto 4px;
-        background-color: $white;
-        width: 36px;
-        height: 36px;
-        line-height: 32px;
-        text-align: center;
-        font-weight: bold;
-        border: {
-          width: 2px;
-          style: solid;
-          color: $brand-primary;
-          radius: 50%;
-        }
+        content: counter(stepNum);
+        font-family: inherit;
+        font-weight: 700;
       }
       &:after {
-        content: '';
-        height: 2px;
-        width: 100%;
-        background-color: $brand-primary;
-        position: absolute;
-        top: 16px;
-        left: 50%;
-        z-index: -1;
+        background-color: $grey-light;
       }
-      &:last-child {
-        &:after {
-          display: none;
-        }
-      }
+    }
+    .multi-steps {
+      display: table;
+      table-layout: fixed;
+      width: 100%;
+      > li {
+        counter-increment: stepNum;
+        text-align: center;
+        display: table-cell;
+        position: relative;
+        color: $brand-primary;
 
-      &.is-active {
-        @extend %remain-steps;
         &:before {
+          content: '\f00c';
+          content: '\2713;';
+          content: '\10003';
+          content: '\10004';
+          content: '\2713';
+          display: block;
+          margin: 0 auto 4px;
           background-color: $white;
-          border-color: $brand-primary;
+          width: 36px;
+          height: 36px;
+          line-height: 32px;
+          text-align: center;
+          font-weight: bold;
+          border: {
+            width: 2px;
+            style: solid;
+            color: $brand-primary;
+            radius: 50%;
+          }
+        }
+        &:after {
+          content: '';
+          height: 2px;
+          width: 100%;
+          background-color: $brand-primary;
+          position: absolute;
+          top: 16px;
+          left: 50%;
+          z-index: -1;
+        }
+        &:last-child {
+          &:after {
+            display: none;
+          }
         }
 
-        ~ li {
-          color: #808080;
+        &.is-active {
           @extend %remain-steps;
           &:before {
-            background-color: $grey-light;
-            border-color: $grey-light;
+            background-color: $white;
+            border-color: $brand-primary;
+          }
+
+          ~ li {
+            color: #808080;
+            @extend %remain-steps;
+            &:before {
+              background-color: $grey-light;
+              border-color: $grey-light;
+            }
           }
         }
       }
     }
-  }
 
-  .upload-file-container {
-    .upload-file-label {
+    .upload-container {
+      width: 90%;
+      margin: auto;
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .upload-file-container {
       display: flex;
       flex-direction: column;
+      background-color: #d1d646;
+      border: 2px #57c4e5 dashed;
+      width: 100%;
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+      img {
+        margin: 0.3rem;
+      }
+      input[type='file'] {
+        display: none;
+      }
+
+      .upload-file-label {
+        display: flex;
+        flex-direction: column;
+        margin: auto;
+        color: white;
+        width: 120px;
+      }
     }
   }
 }

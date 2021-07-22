@@ -2,22 +2,36 @@
 
 .nav-container {
   display: flex;
-  flex-direction: column;
-  margin: 2rem;
-  justify-content: space-around;
-  background-color: white;
+  justify-content: flex-start;
+  gap: 25px;
+  align-items: center;
+  background-color: #edf2ef;
   color: black;
   font-family: 'Encode Sans SC', sans-serif;
   font-weight: 400;
+  padding: 1rem;
+  border-radius: 5px;
+
+  .navbar-logo {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+  }
 
   .option {
     cursor: pointer;
     border-bottom: 1px solid transparent;
   }
+  a {
+    text-decoration: none;
+    color: black;
+  }
 
   .option:hover {
     transition: 0.3s all ease-in;
-    border-bottom: 1px solid hsl(14, 31%, 61%);
-    color: hsl(14, 31%, 61%);
+    border-bottom: 1px solid #f97068;
+    color: #f97068;
   }
 }

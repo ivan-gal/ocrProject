@@ -1,8 +1,11 @@
+import uploadCloud from '../img/cloud-upload.svg';
+
 interface UploadFileInterface {
   files: string[];
   setFiles: (files: []) => void;
   preview: string[];
   setPreview: (preview: []) => void;
+  setSteps: (steps: number) => void;
 }
 
 const UploadFile: React.FC<UploadFileInterface> = ({
@@ -10,6 +13,7 @@ const UploadFile: React.FC<UploadFileInterface> = ({
   setFiles,
   setPreview,
   preview,
+  setSteps,
 }) => {
   const handleFile = (e: any) => {
     const allFiles = [...files, ...(Array.from(e.target.files) as [])] as [];
@@ -24,22 +28,25 @@ const UploadFile: React.FC<UploadFileInterface> = ({
   };
 
   const handleOnclick = async () => {
-    const formData = new FormData();
+    // const formData = new FormData();
 
-    formData.append('docImg', files[0]);
+    // formData.append('docImg', files[0]);
 
-    const res = await fetch('http://poi-api.trek-quest.com/login', {
-      method: 'POST',
-      body: formData,
-    });
+    // const res = await fetch('http://poi-api.trek-quest.com/login', {
+    //   method: 'POST',
+    //   body: formData,
+    // });
+    setSteps(1);
   };
   return (
     <div className="upload-file-container">
       <label className="upload-file-label">
-        Sube tu archivo.
+        <img src={uploadCloud} alt="" />
         <input type="file" onChange={(e) => handleFile(e)} multiple />
-        <button onClick={handleOnclick}>Convertir imagen a texto</button>
       </label>
+      <button className="btn fourth" onClick={handleOnclick}>
+        Convertir
+      </button>
     </div>
   );
 };

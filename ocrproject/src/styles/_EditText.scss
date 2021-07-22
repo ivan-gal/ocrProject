@@ -1,0 +1,32 @@
+.edit-text-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+
+  width: 45vw;
+  height: 50vh;
+
+  textarea {
+    width: 80%;
+    height: 80%;
+    font-size: 0.9em;
+    border: none;
+    margin: 2.5rem;
+    resize: none;
+    font-family: 'Open Sans', sans-serif;
+  }
+  textarea:focus-visible {
+    outline: 0;
+  }
+  .buttons-back-next {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .textarea-div {
+    background-color: white;
+    height: 100%;
+    border: 1px solid #f8f9fa;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  }
+}
