@@ -1,15 +1,29 @@
-const Convert: React.FC = () => {
+import docxIcon from '../img/docx.svg';
+import Select from 'react-select';
+
+interface ConvertInterface {
+  setSteps: (steps: number) => void;
+}
+const Convert: React.FC<ConvertInterface> = ({ setSteps }) => {
+  const options = [
+    { value: 'docx', label: 'Documento de Word' },
+    { value: 'odt', label: 'Documento en formato odt' },
+    { value: 'pdf', label: 'Documento en formato PDF' },
+  ];
   return (
     <div className="convert-docs">
       <label htmlFor="">
-        Tipo de formato
-        <select name="format-type">
-          <option>.docx</option>
-          <option>.odt</option>
-          <option>.pdf</option>
-        </select>
+        Formato
+        <Select options={options} />
       </label>
-      <button>Descargar documento</button>
+      <div className="buttons-back-next">
+        <button className="btn fourth back" onClick={() => setSteps(1)}>
+          Atras
+        </button>
+        <button className="btn fourth last" onClick={() => setSteps(2)}>
+          Descargar
+        </button>
+      </div>
     </div>
   );
 };

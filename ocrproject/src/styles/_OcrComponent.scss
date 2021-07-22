@@ -5,23 +5,34 @@ $grey-light: #ededed;
 .ocr-component-container {
   h1 {
     color: #333447;
+    align-self: flex-start;
+    text-align: start;
+    border-bottom: 1px solid #333447;
+    line-height: 1.6em;
+    width: 100%;
   }
   .main-container {
     margin: auto;
     margin-top: 4rem;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: space-evenly;
     background-color: #edf2ef;
     min-width: 200px;
     max-width: 50vw;
-    height: fit-content;
     min-height: 60vh;
     padding: 2rem;
     border-radius: 5px;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
+      rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+
+    .flex-container {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      min-height: 40vh;
+    }
 
     .container-fluid {
+      z-index: 2;
+
       ul {
         list-style-type: disc;
         margin-block-start: 0;
@@ -32,93 +43,42 @@ $grey-light: #ededed;
       }
     }
 
-    %remain-steps {
-      &:before {
-        content: counter(stepNum);
-        font-family: inherit;
-        font-weight: 700;
-      }
-      &:after {
-        background-color: $grey-light;
-      }
-    }
-    .multi-steps {
-      display: table;
-      table-layout: fixed;
-      width: 100%;
-      > li {
-        counter-increment: stepNum;
-        text-align: center;
-        display: table-cell;
-        position: relative;
-        color: $brand-primary;
-
-        &:before {
-          content: '\f00c';
-          content: '\2713;';
-          content: '\10003';
-          content: '\10004';
-          content: '\2713';
-          display: block;
-          margin: 0 auto 4px;
-          background-color: $white;
-          width: 36px;
-          height: 36px;
-          line-height: 32px;
-          text-align: center;
-          font-weight: bold;
-          border: {
-            width: 2px;
-            style: solid;
-            color: $brand-primary;
-            radius: 50%;
-          }
-        }
-        &:after {
-          content: '';
-          height: 2px;
-          width: 100%;
-          background-color: $brand-primary;
-          position: absolute;
-          top: 16px;
-          left: 50%;
-          z-index: -1;
-        }
-        &:last-child {
-          &:after {
-            display: none;
-          }
-        }
-
-        &.is-active {
-          @extend %remain-steps;
-          &:before {
-            background-color: $white;
-            border-color: $brand-primary;
-          }
-
-          ~ li {
-            color: #808080;
-            @extend %remain-steps;
-            &:before {
-              background-color: $grey-light;
-              border-color: $grey-light;
-            }
-          }
-        }
-      }
-    }
-
     .upload-container {
+      position: relative;
       width: 90%;
       margin: auto;
       margin-top: 2rem;
       margin-bottom: 2rem;
     }
 
+    .upload-container-exit {
+      position: absolute;
+      opacity: 1;
+      transform: translate(0px) scale(0.5);
+    }
+    .upload-container-exit-active {
+      opacity: 0;
+      transform: translateY(-200px) scale(0.4);
+      transition: all 0.5s ease-in-out;
+    }
+
+    .upload-container-enter {
+      opacity: 0;
+      transform: translateY(-200px) scale(0.5);
+    }
+    .upload-container-enter-active {
+      opacity: 1;
+      transform: translateY(-0) scale(1);
+      transition: all 0.5s ease-in-out;
+    }
+
+    .upload-container-exit-done {
+    }
+
     .upload-file-container {
       display: flex;
       flex-direction: column;
+      position: absolute;
       background-color: #d1d646;
       border: 2px #57c4e5 dashed;
       width: 100%;

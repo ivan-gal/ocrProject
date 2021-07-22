@@ -18,10 +18,6 @@
   textarea:focus-visible {
     outline: 0;
   }
-  .buttons-back-next {
-    display: flex;
-    justify-content: space-around;
-  }
 
   .textarea-div {
     background-color: white;
@@ -29,4 +25,29 @@
     border: 1px solid #f8f9fa;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   }
+}
+
+.edit-container-enter {
+  opacity: 0;
+  transform: translateY(200px);
+}
+
+.edit-container-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.5s ease-in-out;
+}
+
+.edit-container-exit {
+  position: absolute;
+  opacity: 1;
+  transform: translate(0px);
+}
+.edit-container-exit-active {
+  opacity: 0;
+  transform: translateY(200px);
+  transition: all 0.4s ease-in-out;
+}
+
+.edit-text-container-enter-done {
 }

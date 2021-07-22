@@ -49,6 +49,11 @@ $turquoise: #1abc9c;
   }
 }
 
+.buttons-back-next {
+  display: flex;
+  justify-content: space-around;
+}
+
 .back {
   color: #333447;
   border-color: $red;
@@ -57,6 +62,11 @@ $turquoise: #1abc9c;
     position: 100%;
     size: 400%;
   }
+  transition: all 550ms ease-in-out;
+}
+
+.last {
+  color: #333447;
   transition: all 550ms ease-in-out;
 }
 
